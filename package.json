@@ -2,16 +2,10 @@
   "name": "bet_a_bot",
   "version": "1.0.0",
   "description": "An experimemtal web app created to build and test and proof various AI backed, mathematically sound, sports betting bots.",
-  "main": "index.js",
+  "main": "webpack.config.js",
   "scripts": {
-    "build": "webpack",
-    "build:dev": "npm run build -- --watch --mode=development",
-    "seed": "node script/seed.js",
     "start": "node server",
-    "start:dev": "npm run build:dev & npm run start-server",
-    "start:dev:logger": "LOGGING=true npm run start:dev",
-    "start:dev:seed": "SEED=true npm run start:dev",
-    "start-server": "JWT=shh nodemon server -e html,js,scss --ignore public --ignore client",
+    "start-dev": "webpack -w --mode=development & nodemon server/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "sway",
@@ -24,6 +18,8 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
     "redux": "^4.2.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.4.2",
     "sequelize": "^6.29.0",
     "volleyball": "^1.5.1"
   },
