@@ -4,6 +4,8 @@
   "description": "An experimemtal web app created to build and test and proof various AI backed, mathematically sound, sports betting bots.",
   "main": "webpack.config.js",
   "scripts": {
+    "start": "node server",
+    "start-dev": "webpack -w & nodemon server/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "sway",
