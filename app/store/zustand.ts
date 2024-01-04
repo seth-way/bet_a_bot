@@ -3,12 +3,20 @@ import { activeLeague } from '@/constants';
 
 type activeLeagues = {
   activeLeagues: activeLeague[];
-  update: (sports: activeLeague[]) => void;
+  update: (leagues: activeLeague[]) => void;
   clear: () => void;
 };
 
-export const useActiveLeagues = create<activeLeagues>((set, get) => ({
+export const useActiveLeagues = create<activeLeagues>(set => ({
   activeLeagues: [],
   update: leagues => set(state => ({ activeLeagues: leagues })),
   clear: () => set(state => ({ activeLeagues: [] })),
+}));
+
+type selectedLeagues = {
+  selectedLeagues: Set<string>;
+};
+
+export const useSelectedLeagues = create<selectedLeagues>(() => ({
+  selectedLeagues: new Set<string>(),
 }));

@@ -1,28 +1,49 @@
 'use client';
 import React, { useState } from 'react';
-import { Box, Typography } from '@mui/material';
-
-import { useActiveLeagues } from '@/store/zustand';
+import {
+  BottomNavigation,
+  BottomNavigationAction,
+  Box,
+  Paper,
+} from '@mui/material';
+import ListOfActiveLeagues from './ListOfActiveLeagues';
 
 export default function ResponseDisplay() {
-  const activeLeaguesStore = useActiveLeagues();
-  const { activeLeagues } = activeLeaguesStore;
+  const [contentType, setType] = React.useState('active_leagues');
+
   return (
     <Box
       component='form'
       noValidate
       autoComplete='true'
-      className='flex flex-col overflow-auto border border-solid border-amber-400 rounded w-8/12 h-full p-5'
+      className='relative flex flex-col border border-solid border-amber-400 rounded w-8/12 h-full'
     >
-      {activeLeagues.map((league, idx) => (
-        <div key={`${league.key}-${idx}`}>
-          <Typography variant='h4'>League: {league.title}</Typography>
-          <Typography variant='h6'>Key: {league.key}</Typography>
-          <Typography variant='body1'>
-            Description: {league.description}
-          </Typography>
-        </div>
-      ))}
+      {/* Load content based on user selection */}
+      {contentType === 'active_leagues' && <ListOfActiveLeagues />}
+      <Paper
+        className='rounded'
+        sx={{ position: 'absolute', bottom: 0, left: 0, right: 0 }}
+      >
+        <BottomNavigation
+          showLabels
+          className='rounded'
+          value={contentType}
+          onChange={(event, newType) => {
+            console.log('new type: ', newType);
+            setType(newType);
+          }}
+        >
+          <BottomNavigationAction
+            label='Active Leagues'
+            value='active_leagues'
+          />
+          <BottomNavigationAction
+            label='Potential Bets'
+            value='potential_bets'
+          />
+          <BottomNavigationAction label='Nearby' />
+        </BottomNavigation>
+      </Paper>
     </Box>
   );
 }

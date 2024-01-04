@@ -21,13 +21,12 @@ export default function RequestForm() {
 
   const fetchActiveLeagues = async () => {
     try {
-      const response: Response = await fetch('/api/activeLeagues');
+      const response: Response = await fetch('/api/odds/active_leagues');
 
       if (response.ok) {
         const { activeLeagues } = await response.json();
-        const filteredSports = filterLeaguesByGroup(activeLeagues);
-        activeLeaguesStore.update(filteredSports);
-        console.log('working');
+        const filteredLeagues = filterLeaguesByGroup(activeLeagues);
+        activeLeaguesStore.update(filteredLeagues);
       }
     } catch (error) {
       if (error instanceof Error) console.log(error.message);
@@ -39,19 +38,18 @@ export default function RequestForm() {
       component='form'
       noValidate
       autoComplete='true'
-      className='flex flex-col p-2 border border-solid border-amber-400 rounded w-3/12'
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        p: 2,
-        border: 'thin solid #ffec80',
-      }}
+      className='flex flex-col items-center p-2 border border-solid border-amber-400 rounded w-full'
     >
       <FormControl className='my-3'>
-        <Button variant='outlined' onClick={fetchActiveLeagues}>
+        <Button
+          variant='outlined'
+          onClick={fetchActiveLeagues}
+          className='w-max'
+        >
           Get Active Leagues
         </Button>
       </FormControl>
+      {/*
       <FormControl className='my-3'>
         <FormLabel id='request-type-label'>Request Type</FormLabel>
         <RadioGroup
@@ -69,6 +67,7 @@ export default function RequestForm() {
           ))}
         </RadioGroup>
       </FormControl>
+      */}
     </Box>
   );
 }
