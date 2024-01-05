@@ -18,3 +18,33 @@ export type activeLeague = {
   active: boolean;
   has_outrights: boolean;
 };
+
+export type OUTCOME = {
+  name: string;
+  price: number;
+  point?: number;
+  description?: string; 
+};
+
+export type MARKET = {
+  key: string;
+  last_update: string;
+  outcomes: OUTCOME[];
+};
+
+export type BOOKMAKER = {
+  key: string;
+  title: string;
+  last_update: string;
+  markets: MARKET[];
+}
+
+export type EVENT = {
+  id: string;
+  sport_key: string;
+  sport_title: string;
+  commence_time: string;
+  home_team: string;
+  away_team: string;
+  bookmakers: [];
+};

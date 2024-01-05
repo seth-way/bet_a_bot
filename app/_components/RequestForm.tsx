@@ -33,6 +33,10 @@ export default function RequestForm() {
     }
   };
 
+  const fetchPotentialBets = async () => {
+
+  }
+
   return (
     <Box
       component='form'
@@ -46,7 +50,16 @@ export default function RequestForm() {
           onClick={fetchActiveLeagues}
           className='w-max'
         >
-          Get Active Leagues
+          Active Leagues
+        </Button>
+      </FormControl>
+      <FormControl className='my-3'>
+        <Button
+          variant='outlined'
+          onClick={fetchPotentialBets}
+          className='w-max'
+        >
+          Potential Bets
         </Button>
       </FormControl>
       {/*

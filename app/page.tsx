@@ -14,10 +14,7 @@ export default function Home() {
 
   const fetchSelectedLeagues = async () => {
     try {
-      console.log('sending fetch request');
       const response: Response = await fetch('/api/odds/selected_leagues');
-      console.log('received response.');
-      console.log('Response: ', response);
       if (response.ok) {
         const { selectedLeaguesList } = await response.json();
 
