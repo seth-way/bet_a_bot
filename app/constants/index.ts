@@ -19,11 +19,13 @@ export type activeLeague = {
   has_outrights: boolean;
 };
 
+// types making up the EVENT type returned when 
+//requesting upcoming bets
 export type OUTCOME = {
   name: string;
   price: number;
   point?: number;
-  description?: string; 
+  description?: string;
 };
 
 export type MARKET = {
@@ -37,7 +39,7 @@ export type BOOKMAKER = {
   title: string;
   last_update: string;
   markets: MARKET[];
-}
+};
 
 export type EVENT = {
   id: string;
@@ -46,5 +48,5 @@ export type EVENT = {
   commence_time: string;
   home_team: string;
   away_team: string;
-  bookmakers: [];
+  bookmakers: BOOKMAKER[];
 };

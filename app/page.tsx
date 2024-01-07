@@ -4,9 +4,9 @@ import { useEffect } from 'react';
 import ListOfSelectLeagues from './_components/ListOfSelectedLeagues';
 import RequestForm from '@/_components/RequestForm';
 import ResponseDisplay from '@/_components/ResponseDisplay';
-
 import { Box } from '@mui/material';
 
+import { displayCurrent } from './utils/processBets';
 import { useSelectedLeagues } from './store/zustand';
 
 export default function Home() {
@@ -31,6 +31,7 @@ export default function Home() {
   };
 
   useEffect(() => {
+    displayCurrent();
     fetchSelectedLeagues();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

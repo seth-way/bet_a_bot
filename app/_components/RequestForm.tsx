@@ -12,7 +12,7 @@ import {
   TextField,
 } from '@mui/material';
 import { activeLeague } from '@/constants';
-import { filterLeaguesByGroup } from '@/utils';
+import { filterLeaguesByGroup } from '@/utils/filterLeagues';
 
 const REQUEST_TYPES = ['get', 'post'];
 
@@ -33,9 +33,7 @@ export default function RequestForm() {
     }
   };
 
-  const fetchPotentialBets = async () => {
-
-  }
+  const fetchPotentialBets = async () => {};
 
   return (
     <Box
